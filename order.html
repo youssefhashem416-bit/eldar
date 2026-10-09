@@ -1,0 +1,906 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سلة المشتريات | دار اكتب للنشر والتوزيع</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f7f3ef;
+    color: #34221f;
+    line-height: 1.8;
+}
+
+header {
+    background: #501b27;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #e7c47b;
+}
+
+.page-title {
+    text-align: center;
+    padding: 28px 15px 10px;
+}
+
+.page-title h2 {
+    color: #501b27;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #78645f;
+    margin-top: 0;
+}
+
+.container {
+    width: 92%;
+    max-width: 1050px;
+    margin: 20px auto 50px;
+}
+
+.box {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    border: 1px solid #eadfd9;
+}
+
+.box h3 {
+    color: #501b27;
+    margin-top: 0;
+    border-bottom: 1px solid #eee2dc;
+    padding-bottom: 12px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee5df;
+    flex-wrap: wrap;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.book-image {
+    width: 95px;
+    height: 125px;
+    object-fit: contain;
+    background: #f7f3ef;
+    border-radius: 7px;
+}
+
+.book-info {
+    flex: 1;
+    min-width: 170px;
+}
+
+.book-info h4 {
+    margin: 0 0 7px;
+    color: #501b27;
+    font-size: 17px;
+}
+
+.book-price {
+    color: #98712e;
+    font-weight: bold;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 10px;
+}
+
+.quantity button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: #501b27;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.quantity span {
+    min-width: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #f8e9e9;
+    color: #a52c37;
+    border: none;
+    padding: 9px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.total-box {
+    background: #fbf6eb;
+    border: 1px solid #ead7aa;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.total-box strong {
+    color: #501b27;
+    font-size: 21px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.empty-cart p {
+    color: #78645f;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.primary-btn {
+    background: #501b27;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #6b2837;
+}
+
+.secondary-btn {
+    background: #e9d6a4;
+    color: #501b27;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #501b27;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9c9c2;
+    border-radius: 8px;
+    background: #fff;
+    color: #34221f;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 2px solid #d6b46b;
+    border-color: #98712e;
+}
+
+.payment-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #e5d6cf;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.payment-option:has(input:checked) {
+    border: 2px solid #98712e;
+    background: #fbf6eb;
+}
+
+.payment-option input {
+    margin-top: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: #501b27;
+}
+
+.payment-option strong {
+    display: block;
+    color: #501b27;
+}
+
+.payment-option small {
+    display: block;
+    color: #78645f;
+}
+
+.wallet-info {
+    display: none;
+    background: #f3f8ed;
+    border: 1px solid #c8dfb7;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+.wallet-info strong {
+    color: #315d26;
+}
+
+.wallet-number {
+    direction: ltr;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #315d26;
+    margin: 5px 0;
+}
+
+.form-note {
+    color: #78645f;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.checkout-total {
+    background: #fbf6eb;
+    border: 1px solid #ead7aa;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkout-total strong {
+    color: #501b27;
+    font-size: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    font-size: 17px;
+    padding: 15px;
+}
+
+footer {
+    background: #35131b;
+    color: white;
+    text-align: center;
+    padding: 22px 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 650px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .box {
+        padding: 16px;
+    }
+
+    .cart-item {
+        align-items: flex-start;
+    }
+
+    .book-image {
+        width: 78px;
+        height: 105px;
+    }
+
+    .remove-btn {
+        margin-right: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>دار اكتب للنشر والتوزيع</h1>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="books.html">الكتب</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">تواصل معنا</a>
+        <a href="cart.html">سلة المشتريات</a>
+    </nav>
+</header>
+
+<div class="page-title">
+    <h2>سلة المشتريات</h2>
+    <p>راجع كتبك، واكتب بياناتك، واختار طريقة الدفع المناسبة ليك.</p>
+</div>
+
+<main class="container">
+
+    <section class="box">
+        <h3>📚 الكتب اللي اخترتها</h3>
+
+        <div id="cartItems"></div>
+
+        <div id="emptyCart" class="empty-cart" style="display:none;">
+            <p>سلة المشتريات فارغة حاليًا.</p>
+            <a href="books.html" class="primary-btn">تصفح الكتب</a>
+        </div>
+
+        <div id="cartSummary">
+            <div class="total-box">
+                <span>إجمالي الطلب</span>
+                <strong id="cartTotal">0 جنيه</strong>
+            </div>
+
+            <p class="form-note">
+                راجع الكميات والإجمالي قبل تأكيد الطلب.
+            </p>
+        </div>
+    </section>
+
+    <section class="box" id="checkoutSection">
+        <h3>📝 بيانات العميل والتوصيل</h3>
+
+        <form id="checkoutForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="customerName">الاسم بالكامل *</label>
+                    <input
+                        type="text"
+                        id="customerName"
+                        name="customerName"
+                        required
+                        placeholder="اكتب اسمك بالكامل">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">رقم الموبايل *</label>
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        name="customerPhone"
+                        required
+                        inputmode="tel"
+                        placeholder="01xxxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="governorate">المحافظة *</label>
+                    <select id="governorate" name="governorate" required>
+                        <option value="">اختر المحافظة</option>
+                        <option>القاهرة</option>
+                        <option>الجيزة</option>
+                        <option>الإسكندرية</option>
+                        <option>القليوبية</option>
+                        <option>الشرقية</option>
+                        <option>الغربية</option>
+                        <option>المنوفية</option>
+                        <option>الدقهلية</option>
+                        <option>البحيرة</option>
+                        <option>كفر الشيخ</option>
+                        <option>دمياط</option>
+                        <option>بورسعيد</option>
+                        <option>الإسماعيلية</option>
+                        <option>السويس</option>
+                        <option>شمال سيناء</option>
+                        <option>جنوب سيناء</option>
+                        <option>الفيوم</option>
+                        <option>بني سويف</option>
+                        <option>المنيا</option>
+                        <option>أسيوط</option>
+                        <option>سوهاج</option>
+                        <option>قنا</option>
+                        <option>الأقصر</option>
+                        <option>أسوان</option>
+                        <option>البحر الأحمر</option>
+                        <option>الوادي الجديد</option>
+                        <option>مطروح</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerAddress">العنوان بالتفصيل *</label>
+                    <input
+                        type="text"
+                        id="customerAddress"
+                        name="customerAddress"
+                        required
+                        placeholder="الشارع والمنطقة ورقم العقار">
+                </div>
+
+                <div class="form-group full">
+                    <label for="customerNotes">ملاحظات إضافية</label>
+                    <textarea
+                        id="customerNotes"
+                        name="customerNotes"
+                        rows="3"
+                        placeholder="أي تفاصيل إضافية عن الطلب أو التوصيل"></textarea>
+                </div>
+
+            </div>
+
+            <h3 style="margin-top:28px;">💳 اختار طريقة الدفع</h3>
+
+            <label class="payment-option">
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="الدفع عند الاستلام"
+                    checked
+                    required
+                    onchange="updatePaymentMethod()">
+
+                <span>
+                    <strong>الدفع عند الاستلام</strong>
+                    <small>ادفع قيمة الطلب عند استلام الكتب.</small>
+                </span>
+            </label>
+
+            <label class="payment-option">
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="المحفظة الإلكترونية"
+                    onchange="updatePaymentMethod()">
+
+                <span>
+                    <strong>المحفظة الإلكترونية</strong>
+                    <small>اختار الدفع بالمحفظة الإلكترونية.</small>
+                </span>
+            </label>
+
+            <div id="walletInfo" class="wallet-info">
+                <strong>رقم المحفظة الإلكترونية</strong>
+                <br>
+
+                <span class="wallet-number">01112517180</span>
+
+                <p>
+                    برجاء التأكد من بيانات التحويل والاحتفاظ بإيصال الدفع.
+                    سيتم إرسال تفاصيل طلبك إلى دار اكتب على واتساب.
+                </p>
+
+                <p class="form-note">
+                    إرسال الطلب لا يعني تأكيد استلام التحويل تلقائيًا.
+                </p>
+            </div>
+
+            <div class="checkout-total">
+                <span>إجمالي قيمة الكتب</span>
+                <strong id="checkoutTotal">0 جنيه</strong>
+            </div>
+
+            <button type="submit" class="primary-btn submit-btn">
+                تأكيد الطلب وإرساله على واتساب
+            </button>
+
+            <p class="form-note">
+                عند الضغط على الزر، هتفتح محادثة واتساب برسالة فيها
+                الكتب وبيانات التوصيل وطريقة الدفع المختارة.
+            </p>
+
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>دار اكتب للنشر والتوزيع</p>
+    <p>للاستفسارات: 01111947957</p>
+    <p>جميع الحقوق محفوظة © دار اكتب للنشر والتوزيع</p>
+</footer>
+
+<script>
+var CART_KEY = "darOktobCart";
+var WHATSAPP_NUMBER = "201111947957";
+
+var cartItemsElement = document.getElementById("cartItems");
+var emptyCartElement = document.getElementById("emptyCart");
+var cartSummaryElement = document.getElementById("cartSummary");
+var checkoutSection = document.getElementById("checkoutSection");
+
+function getCart() {
+    try {
+        var cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+
+        if (!Array.isArray(cart)) {
+            return [];
+        }
+
+        return cart;
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function getItemName(item) {
+    return item.title ||
+           item.name ||
+           item.bookName ||
+           item.book ||
+           "كتاب";
+}
+
+function getItemPrice(item) {
+    var price = Number(item.price);
+
+    if (!isFinite(price) || price < 0) {
+        return 0;
+    }
+
+    return price;
+}
+
+function getItemQuantity(item) {
+    var quantity = Number(item.quantity || item.qty || 1);
+
+    if (!isFinite(quantity) || quantity < 1) {
+        quantity = 1;
+    }
+
+    return Math.floor(quantity);
+}
+
+function getItemImage(item) {
+    return item.image ||
+           item.img ||
+           item.cover ||
+           "images/logo%20dar.jpg";
+}
+
+function getCartTotal(cart) {
+    var total = 0;
+
+    for (var i = 0; i < cart.length; i++) {
+        total += getItemPrice(cart[i]) * getItemQuantity(cart[i]);
+    }
+
+    return total;
+}
+
+function formatMoney(amount) {
+    return amount.toLocaleString("ar-EG") + " جنيه";
+}
+
+function renderCart() {
+    var cart = getCart();
+
+    cartItemsElement.innerHTML = "";
+
+    if (cart.length === 0) {
+        emptyCartElement.style.display = "block";
+        cartSummaryElement.style.display = "none";
+
+        document.getElementById("cartTotal").textContent = "0 جنيه";
+        document.getElementById("checkoutTotal").textContent = "0 جنيه";
+
+        return;
+    }
+
+    emptyCartElement.style.display = "none";
+    cartSummaryElement.style.display = "block";
+
+    for (var i = 0; i < cart.length; i++) {
+        (function(index) {
+            var item = cart[index];
+            var name = getItemName(item);
+            var price = getItemPrice(item);
+            var quantity = getItemQuantity(item);
+            var image = getItemImage(item);
+
+            var row = document.createElement("div");
+            row.className = "cart-item";
+
+            var img = document.createElement("img");
+            img.className = "book-image";
+            img.src = image;
+            img.alt = name;
+
+            img.onerror = function() {
+                this.onerror = null;
+                this.src = "images/logo%20dar.jpg";
+            };
+
+            var info = document.createElement("div");
+            info.className = "book-info";
+
+            var title = document.createElement("h4");
+            title.textContent = name;
+
+            var priceText = document.createElement("div");
+            priceText.className = "book-price";
+            priceText.textContent = formatMoney(price) + " للنسخة";
+
+            var subtotal = document.createElement("div");
+            subtotal.textContent = "الإجمالي: " +
+                formatMoney(price * quantity);
+
+            var quantityBox = document.createElement("div");
+            quantityBox.className = "quantity";
+
+            var minusButton = document.createElement("button");
+            minusButton.type = "button";
+            minusButton.textContent = "−";
+            minusButton.setAttribute("aria-label", "تقليل الكمية");
+
+            minusButton.onclick = function() {
+                var updatedCart = getCart();
+
+                if (index >= updatedCart.length) {
+                    return;
+                }
+
+                var currentQuantity = getItemQuantity(updatedCart[index]);
+
+                if (currentQuantity > 1) {
+                    updatedCart[index].quantity = currentQuantity - 1;
+                } else {
+                    updatedCart.splice(index, 1);
+                }
+
+                saveCart(updatedCart);
+                renderCart();
+            };
+
+            var quantityText = document.createElement("span");
+            quantityText.textContent = quantity;
+
+            var plusButton = document.createElement("button");
+            plusButton.type = "button";
+            plusButton.textContent = "+";
+            plusButton.setAttribute("aria-label", "زيادة الكمية");
+
+            plusButton.onclick = function() {
+                var updatedCart = getCart();
+
+                if (index >= updatedCart.length) {
+                    return;
+                }
+
+                updatedCart[index].quantity =
+                    getItemQuantity(updatedCart[index]) + 1;
+
+                saveCart(updatedCart);
+                renderCart();
+            };
+
+            quantityBox.appendChild(minusButton);
+            quantityBox.appendChild(quantityText);
+            quantityBox.appendChild(plusButton);
+
+            info.appendChild(title);
+            info.appendChild(priceText);
+            info.appendChild(subtotal);
+            info.appendChild(quantityBox);
+
+            var removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.className = "remove-btn";
+            removeButton.textContent = "حذف الكتاب";
+
+            removeButton.onclick = function() {
+                var updatedCart = getCart();
+
+                if (index >= updatedCart.length) {
+                    return;
+                }
+
+                updatedCart.splice(index, 1);
+                saveCart(updatedCart);
+                renderCart();
+            };
+
+            row.appendChild(img);
+            row.appendChild(info);
+            row.appendChild(removeButton);
+
+            cartItemsElement.appendChild(row);
+        })(i);
+    }
+
+    var total = getCartTotal(cart);
+
+    document.getElementById("cartTotal").textContent =
+        formatMoney(total);
+
+    document.getElementById("checkoutTotal").textContent =
+        formatMoney(total);
+}
+
+function updatePaymentMethod() {
+    var selected = document.querySelector(
+        'input[name="paymentMethod"]:checked'
+    );
+
+    var walletInfo = document.getElementById("walletInfo");
+
+    if (selected && selected.value === "المحفظة الإلكترونية") {
+        walletInfo.style.display = "block";
+    } else {
+        walletInfo.style.display = "none";
+    }
+}
+
+document.getElementById("checkoutForm").addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
+
+        var cart = getCart();
+
+        if (cart.length === 0) {
+            alert("سلة المشتريات فارغة. أضف كتابًا واحدًا على الأقل.");
+            return;
+        }
+
+        var total = getCartTotal(cart);
+
+        if (total <= 0) {
+            alert("تأكد من أن أسعار الكتب مضافة بشكل صحيح قبل تأكيد الطلب.");
+            return;
+        }
+
+        var name = document.getElementById("customerName").value.trim();
+        var phone = document.getElementById("customerPhone").value.trim();
+        var governorate = document.getElementById("governorate").value;
+        var address = document.getElementById("customerAddress").value.trim();
+        var notes = document.getElementById("customerNotes").value.trim();
+
+        var selectedPayment = document.querySelector(
+            'input[name="paymentMethod"]:checked'
+        );
+
+        if (!selectedPayment) {
+            alert("من فضلك اختار طريقة الدفع.");
+            return;
+        }
+
+        var paymentMethod = selectedPayment.value;
+
+        var message = "طلب جديد من موقع دار اكتب للنشر والتوزيع\n\n";
+
+        message += "بيانات العميل:\n";
+        message += "الاسم: " + name + "\n";
+        message += "رقم الموبايل: " + phone + "\n";
+        message += "المحافظة: " + governorate + "\n";
+        message += "العنوان: " + address + "\n\n";
+
+        message += "الكتب المطلوبة:\n";
+
+        for (var i = 0; i < cart.length; i++) {
+            var item = cart[i];
+
+            message += (i + 1) + "- " + getItemName(item) + "\n";
+            message += "الكمية: " + getItemQuantity(item) + "\n";
+            message += "سعر النسخة: " +
+                getItemPrice(item) + " جنيه\n";
+            message += "إجمالي الكتاب: " +
+                (getItemPrice(item) * getItemQuantity(item)) +
+                " جنيه\n\n";
+        }
+
+        message += "إجمالي قيمة الكتب: " + total + " جنيه\n";
+        message += "طريقة الدفع: " + paymentMethod + "\n";
+
+        if (paymentMethod === "المحفظة الإلكترونية") {
+            message += "رقم المحفظة المعروض بالموقع: 01112517180\n";
+        }
+
+        if (notes !== "") {
+            message += "\nملاحظات العميل: " + notes + "\n";
+        }
+
+        message += "\nبرجاء مراجعة الطلب وتأكيد تفاصيل التوصيل.";
+
+        var whatsappURL =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank");
+    }
+);
+
+updatePaymentMethod();
+renderCart();
+</script>
+
+</body>
+</html>

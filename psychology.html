@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>علم النفس | دار اكتب للنشر والتوزيع</title>
+<meta name="description" content="اكتشف كتب علم النفس من إصدارات دار اكتب للنشر والتوزيع.">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #171313;
+    --surface: #211a19;
+    --surface-light: #2a201e;
+    --burgundy: #792632;
+    --burgundy-hover: #963441;
+    --gold: #e5c782;
+    --gold-light: #f4dfac;
+    --text: #fff5e8;
+    --muted: #c4b4a5;
+    --border: rgba(229, 199, 130, .18);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
+    background: rgba(33, 26, 25, .97);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    color: var(--gold);
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-size: 15px;
+    transition: color .25s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.page-header {
+    text-align: center;
+    padding: 65px 20px 40px;
+    background:
+        radial-gradient(ellipse at top, rgba(121, 38, 50, .30), transparent 70%),
+        var(--bg);
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.page-header h1 {
+    color: var(--gold-light);
+    font-size: clamp(30px, 5vw, 44px);
+    margin-bottom: 12px;
+}
+
+.page-header p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 650px;
+    margin: auto;
+}
+
+.categories {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-btn {
+    display: inline-block;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: var(--burgundy);
+    border-color: var(--gold);
+    color: var(--text);
+}
+
+.section-heading {
+    max-width: 1200px;
+    margin: 15px auto 20px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.section-heading h2 {
+    color: var(--gold-light);
+    font-size: 23px;
+}
+
+.section-heading span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.books-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.book-card {
+    background: linear-gradient(145deg, var(--surface-light), var(--surface));
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 199, 130, .55);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
+}
+
+.book-image {
+    display: block;
+    background: #100d0d;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.book-card img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    transition: transform .3s;
+}
+
+.book-card:hover img {
+    transform: scale(1.025);
+}
+
+.book-info {
+    padding: 18px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.book-info h3 {
+    color: var(--gold-light);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.book-info .author {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: var(--gold);
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.details-btn {
+    display: inline-block;
+    margin-top: auto;
+    background: var(--burgundy);
+    border: 1px solid rgba(229, 199, 130, .3);
+    color: var(--text);
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.details-btn:hover {
+    background: var(--burgundy-hover);
+    border-color: var(--gold);
+}
+
+.bottom-cta {
+    max-width: 1160px;
+    margin: 0 auto 60px;
+    padding: 30px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.bottom-cta h2 {
+    color: var(--gold-light);
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.bottom-cta p {
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+footer {
+    background: #110e0e;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 28px 15px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+footer strong {
+    display: block;
+    color: var(--gold);
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+    .books-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .book-card img {
+        height: 260px;
+    }
+
+    .bottom-cta {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        justify-content: center;
+        text-align: center;
+        padding: 15px 12px;
+    }
+
+    .brand {
+        width: 100%;
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 12px 16px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .page-header {
+        padding: 45px 18px 30px;
+    }
+
+    .page-header p {
+        font-size: 15px;
+    }
+
+    .categories {
+        padding-right: 12px;
+        padding-left: 12px;
+        gap: 7px;
+    }
+
+    .category-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .section-heading {
+        padding: 0 14px;
+    }
+
+    .section-heading h2 {
+        font-size: 20px;
+    }
+
+    .books-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 0 12px 40px;
+        gap: 12px;
+    }
+
+    .book-image {
+        padding: 9px;
+    }
+
+    .book-card img {
+        height: 210px;
+    }
+
+    .book-info {
+        padding: 13px 9px 16px;
+    }
+
+    .book-info h3 {
+        font-size: 15px;
+    }
+
+    .book-info .author {
+        font-size: 12px;
+    }
+
+    .price {
+        font-size: 15px;
+    }
+
+    .details-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .bottom-cta {
+        padding: 24px 15px;
+        margin-bottom: 40px;
+    }
+
+    .bottom-cta h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .books-container {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .book-card img {
+        height: 300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a class="brand" href="index.html">دار اكتب للنشر والتوزيع</a>
+
+    <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="books.html">كل الكتب</a>
+        <a href="order.html">سلة الطلبات</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">تواصل معنا</a>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="eyebrow">إصدارات دار اكتب</div>
+    <h1>عالم علم النفس</h1>
+    <p>تصفح مجموعة كتب علم النفس من إصدارات دار اكتب للنشر والتوزيع.</p>
+</header>
+
+<div class="categories">
+    <a href="books.html" class="category-btn">كل الكتب</a>
+    <a href="novels.html" class="category-btn">الروايات</a>
+    <a href="stories.html" class="category-btn">القصص</a>
+    <a href="translations.html" class="category-btn">الترجمات</a>
+    <a href="thought.html" class="category-btn">الأعمال الفكرية</a>
+    <a href="psychology.html" class="category-btn active">علم النفس</a>
+</div>
+
+<div class="section-heading">
+    <h2>كتب علم النفس</h2>
+    <span>3 كتب في هذا التصنيف</span>
+</div>
+
+<section class="books-container">
+
+    <article class="book-card">
+        <a class="book-image" href="book.html?book=1" aria-label="تفاصيل كتاب كيف تصنع مريضًا نفسيًا؟">
+            <img src="images/book1.jpg" alt="غلاف كتاب كيف تصنع مريضًا نفسيًا؟" loading="lazy">
+        </a>
+
+        <div class="book-info">
+            <h3>كيف تصنع مريضًا نفسيًا؟</h3>
+            <p class="author">كريمة الشريف</p>
+            <div class="price">250 جنيهًا</div>
+            <a class="details-btn" href="book.html?book=1">تفاصيل الكتاب</a>
+        </div>
+    </article>
+
+    <article class="book-card">
+        <a class="book-image" href="book.html?book=3" aria-label="تفاصيل كتاب إدارة الضغوط والأعباء النفسية">
+            <img src="images/book3.jpg" alt="غلاف كتاب إدارة الضغوط والأعباء النفسية" loading="lazy">
+        </a>
+
+        <div class="book-info">
+            <h3>إدارة الضغوط والأعباء النفسية</h3>
+            <p class="author">رودينة رجب</p>
+            <div class="price">175 جنيهًا</div>
+            <a class="details-btn" href="book.html?book=3">تفاصيل الكتاب</a>
+        </div>
+    </article>
+
+    <article class="book-card">
+        <a class="book-image" href="book.html?book=12" aria-label="تفاصيل كتاب عزيزي المتألم نفسيًا">
+            <img src="images/book12.jpg" alt="غلاف كتاب عزيزي المتألم نفسيًا" loading="lazy">
+        </a>
+
+        <div class="book-info">
+            <h3>عزيزي المتألم نفسيًا</h3>
+            <p class="author">رفيق مرقص</p>
+            <div class="price">200 جنيه</div>
+            <a class="details-btn" href="book.html?book=12">تفاصيل الكتاب</a>
+        </div>
+    </article>
+
+</section>
+
+<section class="bottom-cta">
+    <h2>اكتشف المزيد من الكتب</h2>
+    <p>تصفح جميع إصدارات دار اكتب واختر الكتاب المناسب لك.</p>
+    <a class="details-btn" href="books.html">استكشف كل الكتب</a>
+</section>
+
+<footer>
+    <strong>دار اكتب للنشر والتوزيع</strong>
+    © 2026 جميع الحقوق محفوظة
+</footer>
+
+</body>
+</html>

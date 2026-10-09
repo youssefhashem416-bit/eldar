@@ -1,0 +1,586 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>شهقة اليائسين - دار اكتب للنشر والتوزيع</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:#ffffff;
+    color:#222222;
+    line-height:2;
+}
+
+
+/* =========================
+   القائمة
+========================= */
+
+nav{
+    width:100%;
+    background:#a9232b;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(120,20,25,0.12);
+}
+
+nav a{
+    color:#ffffff;
+    text-decoration:none;
+    padding:17px 30px;
+    display:block;
+    font-size:19px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#ffffff;
+    color:#a9232b;
+}
+
+
+/* =========================
+   رأس الصفحة
+========================= */
+
+.book-header{
+    background:#fafafa;
+    text-align:center;
+    padding:65px 20px;
+    border-bottom:1px solid #eeeeee;
+}
+
+.book-header h1{
+    color:#a9232b;
+    font-size:44px;
+    line-height:1.5;
+    margin-bottom:12px;
+}
+
+.book-header h2{
+    color:#444444;
+    font-size:24px;
+    font-weight:normal;
+}
+
+
+/* =========================
+   محتوى الكتاب
+========================= */
+
+.book-container{
+    max-width:1100px;
+    margin:auto;
+    padding:70px 25px;
+}
+
+.book-main{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:55px;
+    align-items:start;
+}
+
+
+/* =========================
+   الغلاف
+========================= */
+
+.book-cover{
+    text-align:center;
+}
+
+.book-cover img{
+    width:100%;
+    max-width:330px;
+    border-radius:10px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   معلومات الكتاب
+========================= */
+
+.book-info h2{
+    color:#a9232b;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.book-info p{
+    font-size:20px;
+    color:#444444;
+    line-height:2.2;
+}
+
+
+/* =========================
+   بيانات الكتاب
+========================= */
+
+.details{
+    margin-top:35px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.detail-card{
+    background:#fafafa;
+    border:1px solid #eeeeee;
+    border-right:5px solid #a9232b;
+    border-radius:10px;
+    padding:18px 20px;
+}
+
+.detail-card strong{
+    display:block;
+    color:#a9232b;
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.detail-card span{
+    color:#444444;
+    font-size:18px;
+}
+
+
+/* =========================
+   عن الكتاب
+========================= */
+
+.description{
+    margin-top:65px;
+    background:#fafafa;
+    border:1px solid #eeeeee;
+    border-radius:14px;
+    padding:45px;
+}
+
+.description h2{
+    text-align:center;
+    color:#a9232b;
+    font-size:34px;
+    margin-bottom:25px;
+}
+
+.description p{
+    color:#444444;
+    font-size:20px;
+    line-height:2.3;
+    text-align:right;
+}
+
+
+/* =========================
+   طلب الكتاب
+========================= */
+
+.order-section{
+    text-align:center;
+    padding:45px 20px 70px;
+}
+
+.order-section h2{
+    color:#a9232b;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+.order-btn{
+    display:inline-block;
+    background:#a9232b;
+    color:#ffffff;
+    text-decoration:none;
+    padding:15px 45px;
+    border-radius:8px;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.order-btn:hover{
+    background:#8f1e25;
+}
+
+
+/* =========================
+   الفوتر
+========================= */
+
+footer{
+    background:#8f1e25;
+    color:#ffffff;
+    text-align:center;
+    padding:27px;
+}
+
+footer p{
+    font-size:17px;
+}
+
+
+/* =========================
+   التابلت
+========================= */
+
+@media(max-width:800px){
+
+    .book-main{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .book-cover img{
+        max-width:280px;
+    }
+
+    .book-info{
+        text-align:center;
+    }
+
+    .details{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================
+   الموبايل
+========================= */
+
+@media(max-width:600px){
+
+    nav a{
+        width:50%;
+        text-align:center;
+        padding:14px 10px;
+        font-size:17px;
+    }
+
+    .book-header{
+        padding:50px 20px;
+    }
+
+    .book-header h1{
+        font-size:34px;
+    }
+
+    .book-header h2{
+        font-size:20px;
+    }
+
+    .book-container{
+        padding:50px 20px;
+    }
+
+    .book-info h2{
+        font-size:28px;
+    }
+
+    .book-info p{
+        font-size:18px;
+    }
+
+    .description{
+        padding:30px 20px;
+    }
+
+    .description h2{
+        font-size:29px;
+    }
+
+    .description p{
+        font-size:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     القائمة الرئيسية
+========================= -->
+
+<nav>
+
+<a href="index.html">
+الرئيسية
+</a>
+
+<a href="books.html">
+الكتب
+</a>
+
+<a href="about.html">
+من نحن
+</a>
+
+<a href="contact.html">
+تواصل معنا
+</a>
+
+</nav>
+
+
+<!-- =========================
+     عنوان الكتاب
+========================= -->
+
+<section class="book-header">
+
+<h1>
+شهقة اليائسين
+</h1>
+
+<h2>
+الانتحار في العالم العربي
+</h2>
+
+</section>
+
+
+<!-- =========================
+     محتوى الكتاب
+========================= -->
+
+<main class="book-container">
+
+<div class="book-main">
+
+
+<!-- الغلاف -->
+
+<div class="book-cover">
+
+<img
+src="images/book7.jpg"
+alt="غلاف كتاب شهقة اليائسين"
+>
+
+</div>
+
+
+<!-- معلومات الكتاب -->
+
+<div class="book-info">
+
+<h2>
+شهقة اليائسين
+</h2>
+
+<p>
+
+<strong>المؤلف:</strong>
+ياسر ثابت
+
+<br>
+
+<strong>التصنيف:</strong>
+الأعمال الفكرية
+
+<br><br>
+
+كتاب يتناول ظاهرة الانتحار في العالم العربي
+من منظور اجتماعي وفكري، ويبحث في الأسباب
+والعوامل التي ترتبط بهذه الظاهرة، مع الاستناد
+إلى وقائع وحالات ونماذج من التاريخ والثقافة
+العربية.
+
+</p>
+
+
+<!-- بيانات الكتاب -->
+
+<div class="details">
+
+
+<div class="detail-card">
+
+<strong>
+الناشر
+</strong>
+
+<span>
+دار اكتب للنشر والتوزيع
+</span>
+
+</div>
+
+
+<div class="detail-card">
+
+<strong>
+اللغة
+</strong>
+
+<span>
+العربية
+</span>
+
+</div>
+
+
+<div class="detail-card">
+
+<strong>
+عدد الصفحات
+</strong>
+
+<span>
+342 صفحة
+</span>
+
+</div>
+
+
+<div class="detail-card">
+
+<strong>
+المقاس
+</strong>
+
+<span>
+21 × 14 سم
+</span>
+
+</div>
+
+
+<div class="detail-card">
+
+<strong>
+سنة النشر
+</strong>
+
+<span>
+2020
+</span>
+
+</div>
+
+
+<div class="detail-card">
+
+<strong>
+النوع
+</strong>
+
+<span>
+كتاب فكري ودراسة اجتماعية
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     عن الكتاب
+========================= -->
+
+<section class="description">
+
+<h2>
+عن الكتاب
+</h2>
+
+<p>
+
+يتناول ياسر ثابت في هذا الكتاب ظاهرة
+الانتحار في العالم العربي، ويحاول الاقتراب
+منها من خلال البحث في أبعادها النفسية
+والاجتماعية والسياسية.
+
+<br><br>
+
+ويناقش الكتاب عددًا من الحالات والشخصيات
+التي ارتبطت بالظاهرة، ويبحث في الظروف
+والسياقات التي أحاطت بها، كما يتوقف عند
+بعض الأحداث المرتبطة بتاريخ المنطقة العربية
+الحديث.
+
+<br><br>
+
+ويتناول الكتاب كذلك قصة محمد البوعزيزي
+وتأثير حادثته في الأحداث التي سبقت
+الثورات العربية، بالإضافة إلى ما عُرف
+بـ«أسبوع الانتحار» في مصر وما ارتبط به
+من أحداث.
+
+<br><br>
+
+ويقدم الكتاب قراءة بحثية واجتماعية لظاهرة
+معقدة، محاولًا فهم أسباب اليأس والسياقات
+الاجتماعية والفكرية المرتبطة بها.
+
+</p>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     طلب الكتاب
+========================= -->
+
+<section class="order-section">
+
+<h2>
+هل ترغب في طلب الكتاب؟
+</h2>
+
+<a href="contact.html" class="order-btn">
+اطلب الكتاب
+</a>
+
+</section>
+
+
+<!-- =========================
+     الفوتر
+========================= -->
+
+<footer>
+
+<p>
+© 2026 دار اكتب للنشر والتوزيع - جميع الحقوق محفوظة
+</p>
+
+</footer>
+
+
+</body>
+
+</html>

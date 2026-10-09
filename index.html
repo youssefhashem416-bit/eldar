@@ -1,0 +1,961 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#350711">
+<meta name="description" content="دار اكتب للنشر والتوزيع - اكتشف أحدث الإصدارات ومجموعة متنوعة من الكتب.">
+<title>دار اكتب للنشر والتوزيع</title>
+
+<style>
+:root {
+    --wine: #350711;
+    --wine2: #581326;
+    --gold: #d6b36a;
+    --gold-light: #f4df9b;
+    --cream: #fff9ee;
+    --muted: #ddcfd2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    color: var(--cream);
+    background: #21040b;
+    overflow-x: hidden;
+    animation: fadePageIn .65s ease both;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--wine);
+}
+
+/* شاشة الافتتاح */
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+    background: radial-gradient(circle, #64182d, #350711 60%, #21040b);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .7s ease, visibility .7s ease;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro img {
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(214,179,106,.2);
+    animation: logoShow .9s ease both;
+}
+
+.intro h2 {
+    margin: 0;
+    color: var(--gold-light);
+    font-size: clamp(22px, 5vw, 34px);
+    animation: textShow .7s ease .15s both;
+}
+
+.intro p {
+    margin: 0;
+    color: var(--muted);
+    animation: textShow .7s ease .25s both;
+}
+
+.intro-line {
+    width: 90px;
+    height: 2px;
+    background: var(--gold);
+    animation: lineShow .8s ease .2s both;
+}
+
+/* رأس الموقع */
+header {
+    padding: 27px 5%;
+    text-align: center;
+    background: linear-gradient(135deg, #581326, #21040b);
+    border-bottom: 1px solid rgba(214,179,106,.4);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.brand img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    background: white;
+    padding: 3px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+}
+
+.brand h1 {
+    margin: 0;
+    color: var(--gold-light);
+    font-size: clamp(21px, 4vw, 35px);
+}
+
+.brand p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.gold-line {
+    width: 100px;
+    height: 2px;
+    margin: 20px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* القائمة الرئيسية */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+    background: rgba(33,4,11,.97);
+    border-bottom: 1px solid rgba(214,179,106,.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 13px;
+    color: var(--cream);
+    font-size: 14px;
+    border-radius: 6px;
+    transition: color .25s, background .25s, transform .25s;
+}
+
+nav a:hover {
+    color: var(--gold-light);
+    background: rgba(214,179,106,.1);
+    transform: translateY(-2px);
+}
+
+/* البانر الرئيسي */
+.hero {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 5%;
+    text-align: center;
+    background:
+        linear-gradient(rgba(33,4,11,.62), rgba(33,4,11,.75)),
+        url("images/banner.jpg") center/cover no-repeat;
+    border-bottom: 1px solid rgba(214,179,106,.25);
+}
+
+.hero-content {
+    max-width: 760px;
+    animation: textShow .9s ease .15s both;
+}
+
+.hero h2 {
+    margin: 0 0 15px;
+    color: var(--gold-light);
+    font-size: clamp(28px, 5vw, 45px);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 23px;
+    line-height: 2;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid var(--gold);
+    border-radius: 7px;
+    background: linear-gradient(135deg, #ead18c, #c49b4e);
+    color: #2b080f;
+    font-weight: bold;
+    text-align: center;
+    transition: transform .25s, box-shadow .25s, filter .25s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(214,179,106,.2);
+    filter: brightness(1.04);
+}
+
+.btn-outline {
+    margin-right: 8px;
+    color: var(--gold-light);
+    background: rgba(33,4,11,.35);
+}
+
+/* تنسيق الأقسام */
+.section {
+    width: 92%;
+    max-width: 1180px;
+    margin: auto;
+    padding: 42px 0;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 0 0 10px;
+    color: var(--gold-light);
+    font-size: clamp(23px, 4vw, 31px);
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.heading-line {
+    width: 75px;
+    height: 3px;
+    margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* أحدث الإصدارات: لا نعرض الكتب هنا */
+.latest-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px solid rgba(214,179,106,.4);
+    border-radius: 14px;
+    background:
+        radial-gradient(ellipse at top, rgba(214,179,106,.1), transparent 65%),
+        linear-gradient(135deg, #581326, #26050d);
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+
+.latest-panel:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+.latest-symbol {
+    margin-bottom: 12px;
+    color: var(--gold-light);
+    font-size: 34px;
+}
+
+.latest-panel h2 {
+    margin: 0 0 12px;
+    color: var(--gold-light);
+    font-size: 27px;
+}
+
+.latest-panel p {
+    max-width: 600px;
+    margin: 0 auto 22px;
+    color: var(--muted);
+    line-height: 2;
+}
+
+/* مختارات المكتبة */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    min-width: 0;
+    padding: 13px;
+    text-align: center;
+    border: 1px solid rgba(214,179,106,.25);
+    border-radius: 12px;
+    background: linear-gradient(145deg, #491020, #29050d);
+    box-shadow: 0 7px 20px rgba(0,0,0,.12);
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 30px rgba(0,0,0,.24);
+}
+
+.book-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+    overflow: hidden;
+    border-radius: 7px;
+    background: rgba(255,255,255,.04);
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    object-fit: contain;
+    transition: transform .35s;
+}
+
+.book-card:hover .book-image img {
+    transform: scale(1.04);
+}
+
+.book-card h3 {
+    margin: 14px 0 7px;
+    color: var(--gold-light);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.book-card .author {
+    min-height: 23px;
+    margin: 0 0 13px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.book-card .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+}
+
+/* عن الدار */
+.about-panel {
+    padding: 28px;
+    border: 1px solid rgba(214,179,106,.3);
+    border-radius: 13px;
+    background: linear-gradient(135deg, #491020, #26050d);
+}
+
+.about-panel h2 {
+    margin-top: 0;
+    color: var(--gold-light);
+}
+
+.about-panel p {
+    margin-bottom: 0;
+    color: var(--muted);
+    line-height: 2.2;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feature {
+    padding: 20px 13px;
+    text-align: center;
+    border: 1px solid rgba(214,179,106,.22);
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+    transition: transform .3s, border-color .3s;
+}
+
+.feature:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+}
+
+.feature-icon {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.feature h3 {
+    margin: 0 0 8px;
+    color: var(--gold-light);
+    font-size: 16px;
+}
+
+.feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* الفوتر */
+footer {
+    padding: 30px 5%;
+    text-align: center;
+    background: #190309;
+    border-top: 1px solid rgba(214,179,106,.3);
+}
+
+footer h3 {
+    margin-top: 0;
+    color: var(--gold-light);
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 18px 0;
+}
+
+.footer-links a {
+    color: var(--gold-light);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* زر واتساب */
+.whatsapp {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #218c55;
+    color: white;
+    font-size: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+    transition: transform .25s;
+}
+
+.whatsapp:hover {
+    transform: translateY(-3px);
+}
+
+/* الرجوع لأعلى الصفحة */
+.back-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1001;
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: var(--wine);
+    color: var(--gold-light);
+    font-size: 22px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: opacity .25s, visibility .25s;
+}
+
+.back-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ظهور الأقسام أثناء التمرير */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade Out عند الانتقال */
+body.page-exit {
+    animation: fadePageOut .3s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes fadePageIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadePageOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes logoShow {
+    from { opacity: 0; transform: scale(.7) rotate(-8deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes textShow {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineShow {
+    from { opacity: 0; transform: scaleX(0); }
+    to { opacity: 1; transform: scaleX(1); }
+}
+
+/* الموبايل والتابلت */
+@media (max-width: 850px) {
+    .books-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px 4%;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand img {
+        width: 58px;
+        height: 58px;
+    }
+
+    .brand p {
+        font-size: 12px;
+    }
+
+    nav {
+        gap: 2px;
+        padding: 7px 3px;
+    }
+
+    nav a {
+        padding: 9px 7px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 290px;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .books-grid {
+        gap: 10px;
+    }
+
+    .book-card {
+        padding: 8px;
+    }
+
+    .book-image {
+        height: 175px;
+    }
+
+    .book-card h3 {
+        font-size: 13px;
+    }
+
+    .book-card .btn {
+        font-size: 12px;
+        padding: 9px 4px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .about-panel {
+        padding: 21px 16px;
+    }
+
+    .btn-outline {
+        margin: 10px 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة الترحيب -->
+<div class="intro" id="intro">
+    <img src="images/logo%20dar.jpg"
+         alt="شعار دار اكتب"
+         onerror="this.style.display='none'">
+    <h2>دار اكتب للنشر والتوزيع</h2>
+    <div class="intro-line"></div>
+    <p>كل كتاب بداية حكاية جديدة</p>
+</div>
+
+<header id="top">
+    <div class="brand">
+        <img src="images/logo%20dar.jpg"
+             alt="شعار دار اكتب"
+             onerror="this.style.display='none'">
+        <div>
+            <h1>دار اكتب للنشر والتوزيع</h1>
+            <p>نفتح أبواب المعرفة... كتابًا بعد كتاب</p>
+        </div>
+    </div>
+    <div class="gold-line"></div>
+</header>
+
+<nav aria-label="القائمة الرئيسية">
+    <a href="index.html">الرئيسية</a>
+    <a href="books.html">كل الكتب</a>
+    <a href="latest.html">أحدث إصداراتنا</a>
+    <a href="cart.html">🛒 سلة المشتريات</a>
+    <a href="about.html">عن الدار</a>
+    <a href="contact.html">تواصل معنا</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>حكايات تبدأ من هنا</h2>
+        <p>
+            اكتشف عالمًا من الكتب والمعرفة مع دار اكتب للنشر والتوزيع.
+            اختر كتابك القادم، ودع كل صفحة تأخذك إلى حكاية جديدة.
+        </p>
+        <a class="btn" href="books.html">تصفح الكتب الآن</a>
+        <a class="btn btn-outline" href="latest.html">أحدث إصداراتنا</a>
+    </div>
+</section>
+
+<main>
+
+    <!-- أحدث إصداراتنا: يفتح صفحة مستقلة -->
+    <section class="section reveal">
+        <div class="latest-panel">
+            <div class="latest-symbol">✦</div>
+            <h2>أحدث إصداراتنا</h2>
+            <p>
+                تعرّف على أحدث الكتب والإصدارات من دار اكتب للنشر والتوزيع.
+            </p>
+            <a class="btn" href="latest.html">اكتشف أحدث إصداراتنا ←</a>
+        </div>
+    </section>
+
+    <!-- مختارات المكتبة -->
+    <section class="section reveal">
+        <div class="section-heading">
+            <h2>مختارات من مكتبتنا</h2>
+            <p>مجموعة من الكتب المتنوعة التي تستحق الاكتشاف</p>
+            <div class="heading-line"></div>
+        </div>
+
+        <div class="books-grid">
+
+            <article class="book-card">
+                <a href="book.html?id=1">
+                    <div class="book-image">
+                        <img src="images/book1.jpg" alt="كيف تصنع مريضًا نفسيًا؟" loading="lazy">
+                    </div>
+                    <h3>كيف تصنع مريضًا نفسيًا؟</h3>
+                </a>
+                <p class="author">كريمة الشريف</p>
+                <a class="btn" href="book.html?id=1">تفاصيل الكتاب</a>
+            </article>
+
+            <article class="book-card">
+                <a href="book.html?id=2">
+                    <div class="book-image">
+                        <img src="images/book2.jpg" alt="ثورة الذكاء الاصطناعي" loading="lazy">
+                    </div>
+                    <h3>ثورة الذكاء الاصطناعي</h3>
+                </a>
+                <p class="author">د. علاء الدين السويفي</p>
+                <a class="btn" href="book.html?id=2">تفاصيل الكتاب</a>
+            </article>
+
+            <article class="book-card">
+                <a href="book.html?id=3">
+                    <div class="book-image">
+                        <img src="images/book3.jpg" alt="إدارة الضغوط والأعباء النفسية" loading="lazy">
+                    </div>
+                    <h3>إدارة الضغوط والأعباء النفسية</h3>
+                </a>
+                <p class="author">رودينة رجب</p>
+                <a class="btn" href="book.html?id=3">تفاصيل الكتاب</a>
+            </article>
+
+            <article class="book-card">
+                <a href="book.html?id=4">
+                    <div class="book-image">
+                        <img src="images/book4.jpg" alt="الحرب الإنسانية" loading="lazy">
+                    </div>
+                    <h3>الحرب الإنسانية</h3>
+                </a>
+                <p class="author">زهير اليعقوبي</p>
+                <a class="btn" href="book.html?id=4">تفاصيل الكتاب</a>
+            </article>
+
+            <article class="book-card">
+                <a href="book.html?id=5">
+                    <div class="book-image">
+                        <img src="images/book5.jpg" alt="تاريخ فلسطين وإسرائيل عبر العصور" loading="lazy">
+                    </div>
+                    <h3>تاريخ فلسطين وإسرائيل عبر العصور</h3>
+                </a>
+                <p class="author">د. هداية محمود العسولي</p>
+                <a class="btn" href="book.html?id=5">تفاصيل الكتاب</a>
+            </article>
+
+            <article class="book-card">
+                <a href="book.html?id=6">
+                    <div class="book-image">
+                        <img src="images/book6.jpg" alt="أحلام نارية" loading="lazy">
+                    </div>
+                    <h3>أحلام نارية</h3>
+                </a>
+                <p class="author">محمد إبراهيم محروس</p>
+                <a class="btn" href="book.html?id=6">تفاصيل الكتاب</a>
+            </article>
+
+        </div>
+
+        <div style="text-align:center;margin-top:27px">
+            <a class="btn" href="books.html">عرض كل الكتب</a>
+        </div>
+    </section>
+
+    <!-- نبذة عن الدار -->
+    <section class="section reveal">
+        <div class="about-panel">
+            <h2>عن دار اكتب للنشر والتوزيع</h2>
+            <p>
+                نؤمن أن الكتاب نافذة إلى المعرفة، وطريق لاكتشاف أفكار
+                وتجارب وعوالم جديدة. تصفح إصداراتنا واختر كتابك القادم.
+            </p>
+            <div style="margin-top:20px">
+                <a class="btn" href="about.html">اعرف المزيد عن الدار</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <h3>إصدارات متنوعة</h3>
+                <p>اكتشف مجموعة متنوعة من الكتب والعناوين.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✦</div>
+                <h3>رحلة من المعرفة</h3>
+                <p>كل كتاب فرصة لاكتشاف فكرة جديدة.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✉</div>
+                <h3>تواصل معنا</h3>
+                <p>يمكنك التواصل معنا للاستفسار عن الكتب.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h3>دار اكتب للنشر والتوزيع</h3>
+    <p>كل كتاب بداية حكاية جديدة</p>
+
+    <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="books.html">كل الكتب</a>
+        <a href="latest.html">أحدث إصداراتنا</a>
+        <a href="cart.html">سلة المشتريات</a>
+        <a href="about.html">عن الدار</a>
+        <a href="contact.html">تواصل معنا</a>
+    </div>
+
+    <p>العنوان: 12 ش عبد الهادي الطحان، من ش الشيخ منصور، المرج الغربية، القاهرة، مصر</p>
+    <p>الهاتف: <a href="tel:01111947957">01111947957</a></p>
+    <p>البريد الإلكتروني: <a href="mailto:daroktob1@yahoo.com">daroktob1@yahoo.com</a></p>
+    <p style="font-size:12px">جميع الحقوق محفوظة © دار اكتب للنشر والتوزيع</p>
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/201111947957"
+   target="_blank"
+   rel="noopener"
+   aria-label="التواصل عبر واتساب">☏</a>
+
+<button class="back-top" id="backTop" type="button" aria-label="الرجوع لأعلى الصفحة">↑</button>
+
+<script>
+(function () {
+    "use strict";
+
+    /* إخفاء شاشة الافتتاح */
+    var intro = document.getElementById("intro");
+
+    window.setTimeout(function () {
+        if (intro) {
+            intro.classList.add("hide");
+        }
+    }, 1800);
+
+    /*
+      انتقال Fade Out قبل فتح صفحة HTML داخل الموقع.
+      نستخدم الرابط النسبي نفسه حتى لا نغيّر مسار الصفحة.
+    */
+    document.addEventListener("click", function (event) {
+        var link = event.target.closest("a");
+
+        if (!link) return;
+
+        var href = link.getAttribute("href");
+
+        if (!href ||
+            href.charAt(0) === "#" ||
+            link.target === "_blank" ||
+            link.hasAttribute("download") ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey) {
+            return;
+        }
+
+        var destination;
+
+        try {
+            destination = new URL(href, window.location.href);
+        } catch (error) {
+            return;
+        }
+
+        if (destination.origin !== window.location.origin) return;
+        if (!/\.html?$/i.test(destination.pathname)) return;
+
+        event.preventDefault();
+        document.body.classList.add("page-exit");
+
+        window.setTimeout(function () {
+            window.location.href = destination.href;
+        }, 300);
+    });
+
+    /* إظهار الأقسام أثناء التمرير */
+    var sections = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(function (section) {
+            observer.observe(section);
+        });
+    } else {
+        sections.forEach(function (section) {
+            section.classList.add("visible");
+        });
+    }
+
+    /* زر الرجوع لأعلى الصفحة */
+    var backTop = document.getElementById("backTop");
+
+    function updateBackTop() {
+        if (backTop) {
+            backTop.classList.toggle("visible", window.scrollY > 300);
+        }
+    }
+
+    window.addEventListener("scroll", updateBackTop, { passive: true });
+    updateBackTop();
+
+    if (backTop) {
+        backTop.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+})();
+</script>
+
+</body>
+</html>

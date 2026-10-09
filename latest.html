@@ -1,0 +1,502 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#300b17">
+<title>أحدث إصداراتنا | دار اكتب للنشر والتوزيع</title>
+
+<style>
+:root {
+    --bg: #19070e;
+    --panel: #300b17;
+    --gold: #d7b46a;
+    --gold-light: #f1d99c;
+    --text: #fff8ed;
+    --muted: #d7c7c7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Tahoma, Arial, sans-serif;
+    line-height: 1.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+header {
+    background: linear-gradient(135deg, #250711, #501328);
+    border-bottom: 1px solid rgba(215,180,106,.45);
+    padding: 16px 5%;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gold-light);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.brand img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    padding: 8px 13px;
+    border-radius: 8px;
+    transition: .25s;
+}
+
+nav a:hover {
+    background: rgba(215,180,106,.15);
+    color: var(--gold-light);
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 20px 55px;
+    background:
+        radial-gradient(ellipse at top, rgba(128,39,63,.5), transparent 70%),
+        linear-gradient(180deg, #300b17, var(--bg));
+    border-bottom: 1px solid rgba(215,180,106,.18);
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 14px;
+}
+
+.hero h1 {
+    margin: 10px 0;
+    color: var(--gold-light);
+    font-size: clamp(30px, 5vw, 48px);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 12px auto 0;
+    color: var(--muted);
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin: 45px 0 30px;
+}
+
+.section-heading h2 {
+    color: var(--gold-light);
+    font-size: 29px;
+    margin: 0 0 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    padding-bottom: 55px;
+}
+
+.book-card {
+    background: linear-gradient(160deg, #39101f, #260812);
+    border: 1px solid rgba(215,180,106,.28);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 28px rgba(0,0,0,.25);
+}
+
+.cover {
+    height: 285px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #52162b, #1c0710);
+    overflow: hidden;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.cover-placeholder {
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(215,180,106,.65);
+    background: linear-gradient(145deg, #6a2338, #250711);
+    color: var(--gold-light);
+}
+
+.book-info {
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.book-info h3 {
+    color: var(--gold-light);
+    font-size: 19px;
+    line-height: 1.6;
+    margin: 0 0 9px;
+}
+
+.author {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 17px;
+}
+
+.book-button {
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    background: var(--gold);
+    color: #28100d;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: .2s;
+}
+
+.book-button:hover {
+    background: var(--gold-light);
+}
+
+.back-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    text-align: center;
+    padding: 0 0 55px;
+}
+
+.back-button {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    border-radius: 9px;
+    padding: 10px 22px;
+    color: var(--gold-light);
+    transition: .2s;
+}
+
+.back-button:hover {
+    background: rgba(215,180,106,.12);
+}
+
+footer {
+    background: #10040a;
+    border-top: 1px solid rgba(215,180,106,.35);
+    text-align: center;
+    padding: 24px 15px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+footer strong {
+    color: var(--gold);
+}
+
+.page-enter {
+    animation: pageEnter .65s ease both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .books-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .cover {
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 13px 4%;
+    }
+
+    .header-inner {
+        justify-content: center;
+    }
+
+    .brand {
+        font-size: 17px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 4px;
+    }
+
+    nav a {
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    .books-grid {
+        gap: 11px;
+    }
+
+    .cover {
+        height: 205px;
+        padding: 9px;
+    }
+
+    .book-info {
+        padding: 12px;
+    }
+
+    .book-info h3 {
+        font-size: 16px;
+    }
+
+    .author {
+        font-size: 12px;
+    }
+
+    .book-button {
+        font-size: 13px;
+        padding: 9px 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page-enter">
+
+<header>
+    <div class="header-inner">
+        <a class="brand" href="index.html">
+            <img src="images/logo%20dar.jpg"
+                 alt="شعار دار اكتب"
+                 onerror="this.style.display='none'">
+            <span>دار اكتب للنشر والتوزيع</span>
+        </a>
+
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="books.html">كل الكتب</a>
+            <a href="about.html">عن الدار</a>
+            <a href="contact.html">تواصل معنا</a>
+            <a href="cart.html">سلة المشتريات</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">إصدارات مختارة من مكتبتنا</div>
+    <h1>أحدث إصداراتنا</h1>
+    <p>
+        اكتشف أحدث الكتب والإصدارات من دار اكتب للنشر والتوزيع،
+        واختر كتابك القادم من بين مجموعة متنوعة من العناوين.
+    </p>
+</section>
+
+<main class="container">
+
+    <div class="section-heading">
+        <h2>إصدارات تستحق القراءة</h2>
+        <p>تعرّف على الكتب الجديدة وتفاصيل كل إصدار.</p>
+    </div>
+
+    <section class="books-grid">
+
+        <!-- الكتاب الأول: الصهيونية -->
+        <article class="book-card">
+            <div class="cover">
+                <img src="images/book8.jpg"
+                     alt="غلاف كتاب الصهيونية"
+                     onerror="this.onerror=null;this.parentElement.innerHTML='<div class=&quot;cover-placeholder&quot;><strong>الصهيونية</strong></div>'">
+            </div>
+            <div class="book-info">
+                <h3>الصهيونية</h3>
+                <p class="author">المؤلف: حسام كصاي</p>
+                <a class="book-button" href="book.html?id=8">
+                    عرض تفاصيل الكتاب
+                </a>
+            </div>
+        </article>
+
+        <!-- الكتاب الثاني: تاريخ البشر والحجر -->
+        <article class="book-card">
+            <div class="cover">
+                <img src="images/book37.jpg"
+                     alt="غلاف كتاب تاريخ البشر والحجر"
+                     onerror="this.onerror=null;this.parentElement.innerHTML='<div class=&quot;cover-placeholder&quot;><strong>تاريخ البشر والحجر</strong></div>'">
+            </div>
+            <div class="book-info">
+                <h3>تاريخ البشر والحجر</h3>
+                <p class="author">دار اكتب للنشر والتوزيع</p>
+                <a class="book-button" href="books.html">
+                    اكتشف الكتاب
+                </a>
+            </div>
+        </article>
+
+        <!-- الكتاب الثالث: التاريخ الثقافي للهستيريا والجنون -->
+        <article class="book-card">
+            <div class="cover">
+                <img src="images/book11.jpg"
+                     alt="غلاف كتاب التاريخ الثقافي للهستيريا والجنون"
+                     onerror="this.onerror=null;this.parentElement.innerHTML='<div class=&quot;cover-placeholder&quot;><strong>التاريخ الثقافي للهستيريا والجنون</strong></div>'">
+            </div>
+            <div class="book-info">
+                <h3>التاريخ الثقافي للهستيريا والجنون</h3>
+                <p class="author">المؤلف: د. ياسر ثابت</p>
+                <a class="book-button" href="book.html?id=11">
+                    عرض تفاصيل الكتاب
+                </a>
+            </div>
+        </article>
+
+        <!-- الكتاب الرابع: تاريخ التفاؤل -->
+        <article class="book-card">
+            <div class="cover">
+                <img src="images/book65.jpg"
+                     alt="غلاف كتاب تاريخ التفاؤل"
+                     onerror="this.onerror=null;this.parentElement.innerHTML='<div class=&quot;cover-placeholder&quot;><strong>تاريخ التفاؤل</strong></div>'">
+            </div>
+            <div class="book-info">
+                <h3>تاريخ التفاؤل</h3>
+                <p class="author">دار اكتب للنشر والتوزيع</p>
+                <a class="book-button" href="books.html">
+                    اكتشف الكتاب
+                </a>
+            </div>
+        </article>
+
+    </section>
+
+    <div class="back-row">
+        <a class="back-button" href="index.html">
+            العودة إلى الصفحة الرئيسية
+        </a>
+
+        <a class="back-button" href="books.html">
+            تصفح كل الكتب
+        </a>
+    </div>
+
+</main>
+
+<footer>
+    <strong>دار اكتب للنشر والتوزيع</strong>
+    <div>الكلمة بداية كل حكاية</div>
+    <div>© جميع الحقوق محفوظة</div>
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('a[href]').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        const href = link.getAttribute('href');
+
+        if (
+            !href ||
+            href.startsWith('#') ||
+            href.startsWith('http') ||
+            href.startsWith('mailto:') ||
+            href.startsWith('tel:') ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey
+        ) {
+            return;
+        }
+
+        const page = document.querySelector('.page-enter');
+
+        if (page) {
+            page.style.transition =
+                'opacity .2s ease, transform .2s ease';
+            page.style.opacity = '0';
+            page.style.transform = 'translateY(8px)';
+        }
+    });
+});
+</script>
+
+</body>
+</html>

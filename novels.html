@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171313">
+<title>الروايات | دار اكتب للنشر والتوزيع</title>
+
+<style>
+:root {
+    --bg: #171313;
+    --surface: #211a19;
+    --burgundy: #792632;
+    --burgundy-hover: #963441;
+    --gold: #e5c782;
+    --gold-light: #f4dfac;
+    --text: #fff5e8;
+    --muted: #c4b4a5;
+    --border: rgba(229,199,130,.18);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+/* NAVBAR */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(23,19,19,.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+    width: min(1200px, 92%);
+    min-height: 76px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+}
+
+.brand {
+    color: var(--gold);
+    font-size: 23px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.brand span {
+    color: var(--text);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: color .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links .nav-cta {
+    background: var(--burgundy);
+    border: 1px solid rgba(229,199,130,.25);
+    border-radius: 9px;
+    padding: 8px 15px;
+    color: white;
+}
+
+/* PAGE HEADER */
+
+.page-header {
+    text-align: center;
+    padding: 48px 20px 38px;
+    background:
+        radial-gradient(ellipse at top, rgba(121,38,50,.3), transparent 70%),
+        linear-gradient(180deg, #211918, var(--bg));
+    border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 12px;
+    padding: 5px 15px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    margin-bottom: 12px;
+    background: rgba(229,199,130,.04);
+}
+
+.page-header h1 {
+    color: var(--gold-light);
+    font-size: clamp(30px, 5vw, 42px);
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.gold-line {
+    width: 65px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 10px;
+    margin: 14px auto;
+}
+
+/* CATEGORY NAVIGATION */
+
+.categories {
+    background: #1c1716;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 12px;
+}
+
+.category-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-btn {
+    display: inline-block;
+    background: #241c1a;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.category-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.category-btn.active {
+    background: var(--gold);
+    color: #211714;
+    border-color: var(--gold);
+    font-weight: bold;
+}
+
+/* BOOK SECTION */
+
+.books-section {
+    padding: 40px 0 65px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    color: var(--gold);
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* BOOK CARD */
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: linear-gradient(155deg, #2a201e, #201918);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    text-align: center;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+    animation: cardAppear .45s ease both;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229,199,130,.55);
+    box-shadow: 0 14px 32px rgba(0,0,0,.25);
+}
+
+.book-image {
+    display: block;
+    padding: 14px 14px 0;
+    background: radial-gradient(ellipse at center, rgba(229,199,130,.07), transparent 70%);
+}
+
+.book-card img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 7px;
+    transition: transform .35s;
+}
+
+.book-card:hover img {
+    transform: scale(1.025);
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+}
+
+.book-category {
+    display: inline-block;
+    align-self: center;
+    color: var(--gold);
+    background: rgba(229,199,130,.08);
+    border: 1px solid rgba(229,199,130,.15);
+    border-radius: 50px;
+    padding: 3px 10px;
+    font-size: 10px;
+    margin-bottom: 9px;
+}
+
+.book-info h2 {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 7px;
+}
+
+.book-info p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 13px;
+}
+
+.book-price {
+    color: var(--gold-light);
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: 12px;
+}
+
+.book-price small {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.book-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--burgundy);
+    color: white;
+    border: 1px solid rgba(229,199,130,.2);
+    border-radius: 9px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.book-button:hover {
+    background: var(--burgundy-hover);
+    transform: translateY(-2px);
+}
+
+/* BOTTOM CTA */
+
+.more-books {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.more-books p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.main-button {
+    display: inline-block;
+    padding: 11px 24px;
+    border-radius: 9px;
+    background: var(--gold);
+    color: #211714;
+    font-size: 14px;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.main-button:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer {
+    background: #100d0d;
+    border-top: 1px solid var(--border);
+    padding: 32px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding-bottom: 22px;
+}
+
+.footer-brand {
+    color: var(--gold);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    font-size: 13px;
+    transition: color .2s;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    border-top: 1px solid rgba(229,199,130,.1);
+    text-align: center;
+    padding-top: 16px;
+}
+
+/* ANIMATION */
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .nav-inner {
+        justify-content: center;
+    }
+
+    .books-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-inner {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .brand {
+        width: 100%;
+        text-align: center;
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .page-header {
+        padding: 35px 15px;
+    }
+
+    .category-list {
+        gap: 8px;
+    }
+
+    .category-btn {
+        font-size: 11px;
+        padding: 8px 11px;
+    }
+
+    .books-section {
+        padding: 30px 0 45px;
+    }
+
+    .books-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+    .book-image {
+        padding: 10px 8px 0;
+    }
+
+    .book-card img {
+        height: 220px;
+    }
+
+    .book-info {
+        padding: 11px;
+    }
+
+    .book-info h2 {
+        font-size: 13px;
+    }
+
+    .book-info p {
+        font-size: 11px;
+    }
+
+    .book-price {
+        font-size: 16px;
+    }
+
+    .book-button {
+        font-size: 11px;
+        padding: 9px 5px;
+    }
+
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 370px) {
+    .books-container {
+        grid-template-columns: 1fr;
+    }
+
+    .book-card {
+        max-width: 320px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .book-card img {
+        height: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">دار <span>اكتب</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="books.html" class="active">الكتب</a>
+            <a href="about.html">من نحن</a>
+            <a href="contact.html">تواصل معنا</a>
+            <a href="order.html" class="nav-cta">🛒 سلة المشتريات</a>
+        </nav>
+    </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <span class="eyebrow">عالم من الحكايات</span>
+    <h1>الروايات</h1>
+    <div class="gold-line"></div>
+    <p>اكتشف الروايات وإصدارات دار اكتب للنشر والتوزيع</p>
+</section>
+
+<!-- CATEGORY NAVIGATION -->
+<section class="categories">
+    <nav class="category-list" aria-label="تصنيفات الكتب">
+        <a href="books.html" class="category-btn">كل الكتب</a>
+        <a href="novels.html" class="category-btn active">الروايات</a>
+        <a href="stories.html" class="category-btn">القصص</a>
+        <a href="translations.html" class="category-btn">الترجمات</a>
+        <a href="thought.html" class="category-btn">الأعمال الفكرية</a>
+        <a href="psychology.html" class="category-btn">علم النفس</a>
+    </nav>
+</section>
+
+<!-- NOVELS -->
+<main class="container books-section">
+
+    <div class="section-heading">
+        <h2>روايات دار اكتب</h2>
+        <p>اختر روايتك القادمة وتعرّف على تفاصيلها</p>
+    </div>
+
+    <div class="books-container">
+
+        <!-- أحلام نارية -->
+        <article class="book-card">
+            <a href="book.html?book=6" class="book-image">
+                <img src="images/book6.jpg" alt="أحلام نارية" loading="lazy">
+            </a>
+            <div class="book-info">
+                <span class="book-category">رواية</span>
+                <h2>أحلام نارية</h2>
+                <p>محمد إبراهيم محروس</p>
+                <div class="book-price">210 <small>جنيه</small></div>
+                <a href="book.html?book=6" class="book-button">تفاصيل الكتاب</a>
+            </div>
+        </article>
+
+        <!-- يهوديت -->
+        <article class="book-card">
+            <a href="book.html?book=9" class="book-image">
+                <img src="images/book9.jpg" alt="يهوديت" loading="lazy">
+            </a>
+            <div class="book-info">
+                <span class="book-category">رواية</span>
+                <h2>يهوديت</h2>
+                <p>عبد الحميد بشارة</p>
+                <div class="book-price">225 <small>جنيه</small></div>
+                <a href="book.html?book=9" class="book-button">تفاصيل الكتاب</a>
+            </div>
+        </article>
+
+        <!-- مولانا الشيخ جواب -->
+        <article class="book-card">
+            <a href="book.html?book=10" class="book-image">
+                <img src="images/book10.jpg" alt="مولانا الشيخ جواب" loading="lazy">
+            </a>
+            <div class="book-info">
+                <span class="book-category">رواية</span>
+                <h2>مولانا الشيخ جواب</h2>
+                <p>يسري أبو القاسم</p>
+                <div class="book-price">367 <small>جنيه</small></div>
+                <a href="book.html?book=10" class="book-button">تفاصيل الكتاب</a>
+            </div>
+        </article>
+
+        <!-- كريسمس القاهرة -->
+        <article class="book-card">
+            <a href="book.html?book=18" class="book-image">
+                <img src="images/book18.jpg" alt="كريسمس القاهرة" loading="lazy">
+            </a>
+            <div class="book-info">
+                <span class="book-category">رواية</span>
+                <h2>كريسمس القاهرة</h2>
+                <p>سامح الجباس</p>
+                <div class="book-price">175 <small>جنيه</small></div>
+                <a href="book.html?book=18" class="book-button">تفاصيل الكتاب</a>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="more-books">
+        <p>هل ترغب في اكتشاف المزيد من إصدارات الدار؟</p>
+        <a href="books.html" class="main-button">عرض جميع الكتب ←</a>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">دار اكتب للنشر والتوزيع</div>
+                <p>القادم دوماً أفضل</p>
+                <p>نؤمن بأن لكل كتاب حكاية، ولكل حكاية قارئًا.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="books.html">الكتب</a>
+                <a href="about.html">من نحن</a>
+                <a href="contact.html">تواصل معنا</a>
+                <a href="order.html">سلة المشتريات</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة © دار اكتب للنشر والتوزيع</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
